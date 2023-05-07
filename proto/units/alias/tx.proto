@@ -1,7 +1,25 @@
 syntax = "proto3";
+
 package units.alias;
 
 option go_package = "units/x/alias/types";
 
 // Msg defines the Msg service.
-service Msg {}
+service Msg {
+  rpc Register (MsgRegister) returns (MsgRegisterResponse);
+  rpc Release  (MsgRelease ) returns (MsgReleaseResponse );
+}
+message MsgRegister {
+  string creator = 1;
+  string name    = 2;
+}
+
+message MsgRegisterResponse {}
+
+message MsgRelease {
+  string creator = 1;
+  string name    = 2;
+}
+
+message MsgReleaseResponse {}
+
