@@ -9,4 +9,5 @@ option go_package = "units/x/alias/types";
 message Params {
   option (gogoproto.goproto_stringer) = false;
   
+  uint32 max_entries = 1;
 }

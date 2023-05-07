@@ -5,7 +5,7 @@ option go_package = "units/x/alias/types";
 
 message Aliases {
   string address = 1; 
-  string names = 2; 
+  repeated string names = 2; 
   
 }
 
