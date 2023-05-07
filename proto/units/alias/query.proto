@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package units.alias;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "units/alias/params.proto";
+import "units/alias/aliases.proto";
+
+option go_package = "units/x/alias/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  
+  // Parameters queries the parameters of the module.
+  rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/units/alias/params";
+  
+  }
+  
+  // Queries a list of Aliases items.
+  rpc Aliases    (QueryGetAliasesRequest) returns (QueryGetAliasesResponse) {
+    option (google.api.http).get = "/units/alias/aliases/{address}";
+  
+  }
+  rpc AliasesAll (QueryAllAliasesRequest) returns (QueryAllAliasesResponse) {
+    option (google.api.http).get = "/units/alias/aliases";
+  
+  }
+}
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  
+  // params holds all the parameters of this module.
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryGetAliasesRequest {
+  string address = 1;
+}
+
+message QueryGetAliasesResponse {
+  Aliases aliases = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllAliasesRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllAliasesResponse {
+  repeated Aliases                                aliases    = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+

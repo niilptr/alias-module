@@ -1,0 +1,11 @@
+syntax = "proto3";
+package units.alias;
+
+option go_package = "units/x/alias/types";
+
+message Aliases {
+  string address = 1; 
+  string names = 2; 
+  
+}
+

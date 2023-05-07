@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package units.alias;
+
+import "gogoproto/gogo.proto";
+import "units/alias/params.proto";
+import "units/alias/aliases.proto";
+
+option go_package = "units/x/alias/types";
+
+// GenesisState defines the alias module's genesis state.
+message GenesisState {
+           Params  params      = 1 [(gogoproto.nullable) = false];
+  repeated Aliases aliasesList = 2 [(gogoproto.nullable) = false];
+}
+
