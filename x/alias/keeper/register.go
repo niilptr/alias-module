@@ -32,7 +32,7 @@ func (k Keeper) Register(ctx sdk.Context, owner string, name string) error {
 
 	// 2. check max entries
 	aliases, found := k.GetAliases(ctx, owner)
-	if len(aliases.Names) >= int(k.GetParams(ctx).MaxEntries) {
+	if found && len(aliases.Names) >= int(k.GetParams(ctx).MaxEntries) {
 		return types.ErrMaxEntries
 	}
 

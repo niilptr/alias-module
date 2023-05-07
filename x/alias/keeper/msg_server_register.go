@@ -13,7 +13,7 @@ func (ms msgServer) Register(goCtx context.Context, msg *types.MsgRegister) (*ty
 
 	err := ms.Keeper.Register(ctx, msg.Creator, msg.Name)
 	if err != nil {
-		return &types.MsgRegisterResponse{}, nil
+		return &types.MsgRegisterResponse{}, err
 	}
 
 	return &types.MsgRegisterResponse{}, nil
