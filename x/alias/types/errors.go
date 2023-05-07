@@ -8,5 +8,8 @@ import (
 
 // x/alias module sentinel errors
 var (
-	ErrSample = sdkerrors.Register(ModuleName, 1100, "sample error")
+	ErrMaxEntries    = sdkerrors.Register(ModuleName, 1101, "max entries reached")
+	ErrAliasNotFree  = sdkerrors.Register(ModuleName, 1102, "alias not free")
+	ErrAliasNotFound = sdkerrors.Register(ModuleName, 1103, "alias not found")
+	ErrInvalidAlias  = sdkerrors.Register(ModuleName, 1104, "alias not valid")
 )

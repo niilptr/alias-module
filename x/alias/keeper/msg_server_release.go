@@ -3,15 +3,18 @@ package keeper
 import (
 	"context"
 
-	sdk "github.com/cosmos/cosmos-sdk/types"
 	"units/x/alias/types"
+
+	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
-func (k msgServer) Release(goCtx context.Context, msg *types.MsgRelease) (*types.MsgReleaseResponse, error) {
+func (ms msgServer) Release(goCtx context.Context, msg *types.MsgRelease) (*types.MsgReleaseResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	// TODO: Handling the message
-	_ = ctx
+	err := ms.Keeper.Release(ctx, msg.Creator, msg.Name)
+	if err != nil {
+		return &types.MsgReleaseResponse{}, err
+	}
 
 	return &types.MsgReleaseResponse{}, nil
 }

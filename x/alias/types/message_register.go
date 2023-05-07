@@ -42,5 +42,11 @@ func (msg *MsgRegister) ValidateBasic() error {
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
 	}
+
+	err = ValidateAlias(msg.Name)
+	if err != nil {
+		return ErrInvalidAlias
+	}
+
 	return nil
 }
